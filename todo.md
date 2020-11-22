@@ -1,6 +1,6 @@
 ## HTML
-[] - UL for user to place tasks
-[] - Add button for the input line
+[x] - UL for user to place tasks
+[x] - Add button for the input line
 
 ## Client
 [] - when as task is created make sure that it refreshes the DOM with the current list of task.
