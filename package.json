@@ -3,5 +3,25 @@
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "pg": "^8.5.1"
-  }
+  },
+  "name": "Weekend_3_Project",
+  "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BPJ94487/Weekend_3_Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BPJ94487/Weekend_3_Project/issues"
+  },
+  "homepage": "https://github.com/BPJ94487/Weekend_3_Project#readme"
 }

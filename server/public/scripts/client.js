@@ -8,6 +8,7 @@ $(document).ready(function(){
 
 function setupClickListeners() {
     $('#submit').on('click', addToDo );
+    $('#listOut').on('click', '.deleteButton', deleteButton );
     
 }; // End setupClickListeners
 
@@ -16,19 +17,31 @@ function addToDo() {
 }; //end addToDo
 
 function getToDo(){
-    // $.ajax({
-    //     type: GET,
-    //     url: '/todo'
-    // }).then(function (response) {
-    //     console.log(response);
-        // renderToDoList();        
-    // }).catch(function (error){
-    //     console.log('erro in GET', error);        
-    // });
+    $.ajax({
+        type: GET,
+        url: '/todo'
+    }).then(function (response) {
+        console.log(response);
+        renderToDoList(response);        
+    }).catch(function (error){
+        console.log('erro in GET', error);        
+    });
 }; // end getToDo
 
-function renderToDoList(){
-    console.log('in renderToDoList');
+function renderToDoList(todoList){
+    
+    $('#listOut').empty();
+    for(let i = 0; i < todoList.length; i++ ){
+        let $tr = $('<tr></tr>');
+        $tr.data('todoList', todoList);
+        $tr.append(`<td>${todoList.todo}</tr>`);
+        $tr.append(`<button class='deleteButton'>DELETE</button>`);
+    }
+    
+} // end renderToDoList
+
+function deleteButton() {
+    console.log('clicking the Delete button works');
     
 }
 
