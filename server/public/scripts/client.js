@@ -16,15 +16,15 @@ function addToDo() {
 }; //end addToDo
 
 function getToDo(){
-    $.ajax({
-        type: GET,
-        url: '/todo'
-    }).then(function (response) {
-        console.log(response);
-        renderToDoList();        
-    }).catch(function (error){
-        console.log('erro in GET', error);        
-    });
+    // $.ajax({
+    //     type: GET,
+    //     url: '/todo'
+    // }).then(function (response) {
+    //     console.log(response);
+        // renderToDoList();        
+    // }).catch(function (error){
+    //     console.log('erro in GET', error);        
+    // });
 }; // end getToDo
 
 function renderToDoList(){
