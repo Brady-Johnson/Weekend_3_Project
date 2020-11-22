@@ -17,10 +17,15 @@ function addToDo() {
 }; //end addToDo
 
 function getToDo(){
+    console.log('got this far');
+    
     $.ajax({
-        type: GET,
+        type: 'GET',
         url: '/todo'
+        
     }).then(function (response) {
+        console.log('response from server: ', response );
+        
         console.log(response);
         renderToDoList(response);        
     }).catch(function (error){
