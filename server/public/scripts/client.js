@@ -18,35 +18,36 @@ function addToDo() {
 
 function getToDo(){
     console.log('got this far');
-    
     $.ajax({
         type: 'GET',
         url: '/todo'
-        
-    }).then(function (response) {
-        console.log('response from server: ', response );
-        
-        console.log(response);
+    }).then(function (response) {      
         renderToDoList(response);        
     }).catch(function (error){
         console.log('erro in GET', error);        
     });
 }; // end getToDo
 
-function renderToDoList(todoList){
+function renderToDoList(todo){
     
     $('#listOut').empty();
-    for(let i = 0; i < todoList.length; i++ ){
-        let $tr = $('<tr></tr>');
-        $tr.data('todoList', todoList);
-        $tr.append(`<td>${todoList.todo}</tr>`);
-        $tr.append(`<button class='deleteButton'>DELETE</button>`);
-    }
     
+    for ( let i = 0; i < todo.length; i++ ) {
+        let todoList = todo[i];   
+         console.log(todoList.todo);
+        
+        
+         $('#listOut').append(`<tr>
+                                        <td>${todoList.todo}</td>
+                                        <td><button class='deleteButton'>DELETE</button></td>
+                                </tr>`);                                    
+    }
 } // end renderToDoList
 
 function deleteButton() {
-    console.log('clicking the Delete button works');
+    let listDelete = $('this').closest('tr').data();
+    console.log(listDelete);
+    
     
 }
 

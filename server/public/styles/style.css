@@ -2,3 +2,7 @@ body{
     background-color: burlywood;
     text-align: center;
 }
+
+table{
+  align-content: center;
+}
