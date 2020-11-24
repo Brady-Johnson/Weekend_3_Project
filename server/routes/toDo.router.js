@@ -18,12 +18,23 @@ toDoRouter.get('/', (req, res) =>{
 })// end GET
 
 //POST
-// toDoRouter.post('/', (req, res) => {
-// console.log('toDoRouter POST');
-// let queryText = 
-// pool.query(queryText).then()
+toDoRouter.post('/', (req, res) => {
+    let todoItem = req.body;
+    console.log('Posting ', todoItem);
 
-// })
+    let queryText = `INSERT INTO "todolist" ("username", "todo", "complete") 
+        VALUES('default', '$1', 'false');`;
+    pool.query(queryText, [todoItem])
+    .then(result => {
+    res.sendStatus(201);
+    })
+    .catch(error => {
+    console.log(`Error adding new thing to ToDo List`, error);
+    res.sendStatus(500);
+    });
+
+
+})
 
 //PUT
 

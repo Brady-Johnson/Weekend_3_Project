@@ -7,12 +7,28 @@ $(document).ready(function(){
 })//end ready
 
 function setupClickListeners() {
-    $('#submit').on('click', addToDo );
+    $('#submit').on('click', handleSubmit );
     $('#listOut').on('click', '.deleteButton', deleteButton );    
 }; // End setupClickListeners
 
-function addToDo() {
-    console.log('InAddToDo, listner is working');
+function handleSubmit() {  
+    let todo = {};
+    todo.todo = $('#toDoIntake').val();
+    addToDo(todo)
+}
+
+    function addToDo(todo) {
+    $.ajax({
+        type: 'POST',
+        url: '/todo',
+        data: todo,
+        }).then(function(response) {
+          console.log('Response from server.', response);
+          getToDo()
+        }).catch(function(error) {
+          console.log('Error in POST', error)
+          alert('Unable to add TODO at this time. Please try again later.');
+        });
 }; //end addToDo
 
 function getToDo(){
