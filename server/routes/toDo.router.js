@@ -32,7 +32,7 @@ toDoRouter.delete('/:id', (req, res) => {
     let id = req.params.id;
     console.log('Delete route called with id of ', id);
    
-    let queryText = `DELETE FROM treats WHERE id=$1;`;
+    let queryText = `DELETE FROM todolist WHERE id=$1;`;
     pool.query(queryText, [id])
     .then(result => {
       res.sendStatus(201);
