@@ -28,7 +28,7 @@ toDoRouter.get('/', (req, res) =>{
 //PUT
 
 //DELETE
-router.delete('/:id', (req, res) => {
+toDoRouter.delete('/:id', (req, res) => {
     let id = req.params.id;
     console.log('Delete route called with id of ', id);
    

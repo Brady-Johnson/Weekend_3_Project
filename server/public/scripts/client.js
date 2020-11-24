@@ -29,24 +29,24 @@ function getToDo(){
 }; // end getToDo
 
 function renderToDoList(todo){
+    console.log(todo);
     
     $('#listOut').empty();
     
     for ( let i = 0; i < todo.length; i++ ) {
         let todoList = todo[i];   
-         console.log(todoList.todo);
-        
-        
-         $('#listOut').append(`<tr>
-                                        <td>${todoList.todo}</td>
-                                        <td><button class='deleteButton'>DELETE</button></td>
-                                </tr>`);                                    
+        let $tr = $('<tr></tr>');
+        $tr.data('todo', todo);
+        $tr.append(`<td>${todoList.todo}</td>`);
+        $tr.append(`<td><button class="deleteButton">DELETE</button></td>`);
+        $('#listOut').append($tr);
     }
+    
 } // end renderToDoList
 
-function deleteButton() {
-    let listDelete = $('this').closest('tr').data();
-    console.log(listDelete);
+function deleteButton() {    
+    let listDelete = $(this).closest('tr').data();
+    console.log(listDelete.todo);
     
     
 }
