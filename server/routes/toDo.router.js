@@ -20,11 +20,11 @@ toDoRouter.get('/', (req, res) =>{
 //POST
 toDoRouter.post('/', (req, res) => {
     let todoItem = req.body;
-    console.log('Posting ', todoItem);
+    console.log('Adding toDo: ', todoItem);
 
-    let queryText = `INSERT INTO "todolist" ("username", "todo", "complete") 
-        VALUES('default', '$1', 'false');`;
-    pool.query(queryText, [todoItem])
+    let queryText = `INSERT INTO "todolist" ( "username", "todo", "complete" ) 
+        VALUES($1, $2, $3);`;
+    pool.query(queryText, [ 'default', todoItem.todo, false])
     .then(result => {
     res.sendStatus(201);
     })
@@ -32,9 +32,7 @@ toDoRouter.post('/', (req, res) => {
     console.log(`Error adding new thing to ToDo List`, error);
     res.sendStatus(500);
     });
-
-
-})
+})// end POST
 
 //PUT
 
