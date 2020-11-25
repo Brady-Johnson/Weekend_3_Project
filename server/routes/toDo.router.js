@@ -35,6 +35,20 @@ toDoRouter.post('/', (req, res) => {
 })// end POST
 
 //PUT
+toDoRouter.put('/:id', (req, res) =>{
+    let todo = req.body;
+    let id = req.params.id;
+    console.log(`updating todo list ${id} with ${todo}`);
+
+    let sqlText = `UPDATE "todolist" SET complete=$1 WHERE id=$2;`;
+    pool.query(sqlText, [true, id] )
+    .then((result) => {
+        res.send(200);
+    }).catch( (error) => {
+       console.log('Error from edit: ', error);
+       res.sendStatus(500); 
+   });
+})//end PUT
 
 //DELETE
 toDoRouter.delete('/:id', (req, res) => {
@@ -50,7 +64,6 @@ toDoRouter.delete('/:id', (req, res) => {
       console.log(`Error deleting treat`, error);
       res.sendStatus(500);
     });
-
-});
+}); // end DELETE
 
 module.exports = toDoRouter;

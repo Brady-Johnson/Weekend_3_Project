@@ -8,7 +8,8 @@ $(document).ready(function(){
 
 function setupClickListeners() {
     $('#submit').on('click', handleSubmit );
-    $('#listOut').on('click', '.deleteButton', deleteButton );    
+    $('#listOut').on('click', '.deleteButton', deleteButton );   
+    $('#listOut').on('click', '.completeButton', completeButton) 
 }; // End setupClickListeners
 
 function handleSubmit() {  
@@ -53,6 +54,9 @@ function renderToDoList(todo){
         $tr.data('tod', todoList.id);
         $tr.append(`<td>${todoList.todo}</td>`);
         $tr.append(`<td><button class="deleteButton">DELETE</button></td>`);
+        if(todoList.complete === false){
+            $tr.append(`<td><button class="completeButton">Complete</button></td>`);
+        }
         $('#listOut').append($tr);
     }
 } // end renderToDoList
@@ -73,3 +77,17 @@ function deleteButton() {
       });
 } //end deleteButton
 
+function completeButton() {
+    let listUpdate = $(this).closest('tr').data().tod;
+    console.log(listUpdate);  
+    
+    $.ajax({
+        type: 'PUT',
+        url: `/todo/${listUpdate}`
+      }).then(function(response) {
+        console.log(response);
+        getToDo();
+      }).catch(function(error){
+        console.log('error in GET', error);
+      });
+}
