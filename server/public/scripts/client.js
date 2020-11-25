@@ -15,6 +15,7 @@ function setupClickListeners() {
 function handleSubmit() {  
     let todo = {};
     todo.todo = $('#toDoIntake').val();
+    $('#toDoIntake').val('');
     addToDo(todo)
 }
 
