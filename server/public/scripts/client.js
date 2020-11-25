@@ -56,6 +56,8 @@ function renderToDoList(todo){
         $tr.append(`<td><button class="deleteButton">DELETE</button></td>`);
         if(todoList.complete === false){
             $tr.append(`<td><button class="completeButton">Complete</button></td>`);
+        }else if(todoList.complete === true){
+            $tr.addClass('complete');
         }
         $('#listOut').append($tr);
     }
